@@ -33,7 +33,9 @@ modules:
         - Name: manageproducstcdm_cdm
           ServiceInstanceName: manageproductscdm-html5-app-runtime-service
           ServiceKeyName: manageproductscdm-html5-app-runtime-key
-          URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/manageproductscdm
+          # トライアルのus10リージョンでは、${default-domain}を指定するとus10-001となるが、
+          # html5-app runtimeのドメインはus10なので注意
+          URL: https://html5-apps-repo-rt.cfapps.us10.hana.ondemand.com/applications/cdm/manageproductscdm
         existing_destinations_policy: update
   build-parameters:
     no-source: true
@@ -110,7 +112,8 @@ resources:
             ProxyType: Internet
             Type: HTTP
             CEP.HTML5contentprovider: true
-            URL: https://providersa-launchpad-tenant.cfapps.region.hana.ondemand.com
+            # Site Directoryではなく、Providerアカウントのサイトのホストを指定
+            URL: https://9fcf6fb2trial.launchpad.cfapps.us10.hana.ondemand.com
           existing_destinations_policy: update
       version: 1.0.0
     service: destination
