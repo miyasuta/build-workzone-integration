@@ -18,7 +18,11 @@ server:
         backend:
           - path: /northwind/V2/Northwind/Northwind.svc
             pathPrefix: /V2/Northwind/Northwind.svc
+          # - path: /northwind
+            # ignorePath: true
             url: https://services.odata.org
+          - path: /odata
+            url: http://localhost:4004  
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
